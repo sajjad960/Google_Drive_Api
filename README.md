@@ -11,3 +11,5 @@ That's why you need to put all details into env file.
 
 ### I build this project for uploading my exported data from DB to the google drive.
 😅
+
+Feature implemented -> Upload
