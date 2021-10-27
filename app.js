@@ -8,6 +8,8 @@ dotenv.config({path: "./config.env"});
 
 const REFRESH_TOKEN = '1//04HkkOBmbDq2ZCgYIARAAGAQSNwF-L9IrY6lzG6v_vByQ_M4jUgrMrDRqYzi793Xoq649Fhuf7hYNg1Cno7kPGz0wvxHjzmI_Rag'
 
+const folderId = '16Um1wclmHp1-X_NoZxHcUVoCK8MsinW3'
+
 const oauth2Client = new google.auth.OAuth2(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
@@ -29,7 +31,8 @@ async function uploadFile() {
          const response = await drive.files.create({
              requestBody: {
                  name: 'uploadchecking.txt',
-                 mimeType: 'text/plain'
+                 mimeType: 'text/plain',
+                 parents: [folderId]
              },
              media: {
                  mimeType: 'text/plain',
