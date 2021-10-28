@@ -1,19 +1,24 @@
-const dotenv = require('dotenv')
+// const dotenv = require('dotenv')
 const {google} = require('googleapis');
 const path = require('path');
 const fs = require('fs')
 
 // import .env variables
-dotenv.config({path: "./config.env"});
+// dotenv.config({path: "./config.env"});
 
 const REFRESH_TOKEN = '1//04HkkOBmbDq2ZCgYIARAAGAQSNwF-L9IrY6lzG6v_vByQ_M4jUgrMrDRqYzi793Xoq649Fhuf7hYNg1Cno7kPGz0wvxHjzmI_Rag'
 
 const folderId = '16Um1wclmHp1-X_NoZxHcUVoCK8MsinW3'
 
+
+const clientId = '972214866228-2sp399rvhtnsqjds1fundtd6qiakm7o5.apps.googleusercontent.com';
+const clientSecret = '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';
+const REDIRECT_URL = 'https://developers.google.com/oauthplayground'
+
 const oauth2Client = new google.auth.OAuth2(
-    process.env.CLIENT_ID,
-    process.env.CLIENT_SECRET,
-    process.env.REDIRECT_URL
+    clientId,
+    clientSecret,
+    REDIRECT_URL
 );
 
 oauth2Client.setCredentials({refresh_token: REFRESH_TOKEN});
