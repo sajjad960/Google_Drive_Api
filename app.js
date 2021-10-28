@@ -23,19 +23,23 @@ const drive = google.drive({
     auth: oauth2Client
 })
 
-const filePath = path.join(__dirname, 'uploadChecking.txt');
+// file name with iso data
+const todayDate = new Date().toISOString().slice(0, 10);
+
+
+const filePath = path.join('../../../Documents', `${todayDate}.json`);
 
 async function uploadFile() {
     try {
         
          const response = await drive.files.create({
              requestBody: {
-                 name: 'uploadchecking.txt',
-                 mimeType: 'text/plain',
+                 name: `${todayDate}.json`,
+                 mimeType: 'application/json',
                  parents: [folderId]
              },
              media: {
-                 mimeType: 'text/plain',
+                 mimeType: 'application/json',
                  body: fs.createReadStream(filePath)
              }
          })
