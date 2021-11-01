@@ -1,6 +1,6 @@
 # GOOGLE DRIVE API
 
-## Instalation
+## Installation
 run this command
 ```
 npm install
