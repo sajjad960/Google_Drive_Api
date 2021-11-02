@@ -6,6 +6,11 @@ run this command
 npm install
 node app.js
 ```
+### Wanna test it?
+run this command
+```
+node app.js
+```
 ### Working with this
 You need your own account details for uploading file into your account drive.
 That's why you need to put all details into env file.
