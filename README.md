@@ -4,7 +4,6 @@
 run this command
 ```
 npm install
-node app.js
 ```
 ### Wanna test it?
 run this command
