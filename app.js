@@ -1,23 +1,21 @@
-// const dotenv = require('dotenv')
+const dotenv = require('dotenv')
 const {google} = require('googleapis');
 const path = require('path');
 const fs = require('fs')
 
 // import .env variables
-// dotenv.config({path: "./config.env"});
+dotenv.config({path: "./config.env"});
 
-const REFRESH_TOKEN = '1//04SR5ECj5F9HpCgYIARAAGAQSNwF-L9IrPfBaFK5Cp0v3_u6-aszWapLp1cg0EavVu7ftRSCm2Mslsnneacrg6RTnuCXKUgeSkD8'
+const REFRESH_TOKEN = process.env.REFRESH_TOKEN;
+const FOLDER_ID = process.env.MY_DRIVE_FOLDER;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
+const REDIRECT_URL= process.env.REDIRECT_URL;
 
-const folderId = '16Um1wclmHp1-X_NoZxHcUVoCK8MsinW3'
-
-
-const clientId = '972214866228-2sp399rvhtnsqjds1fundtd6qiakm7o5.apps.googleusercontent.com';
-const clientSecret = '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';
-const REDIRECT_URL = 'https://developers.google.com/oauthplayground'
 
 const oauth2Client = new google.auth.OAuth2(
-    clientId,
-    clientSecret,
+    CLIENT_ID,
+    CLIENT_SECRET,
     REDIRECT_URL
 );
 
@@ -28,20 +26,23 @@ const drive = google.drive({
     auth: oauth2Client
 })
 
-// file name with iso data
+// file name with iso date
 const todayDate = new Date().toISOString().slice(0, 10);
 
+// const filePath = path.join('../../../Documents', `${todayDate}.json`);
 
-const filePath = path.join('../../../Documents', `${todayDate}.json`);
+//testing
+const filePath = path.join(__dirname, 'uploadChecking.txt');
 
 async function uploadFile() {
     try {
         
          const response = await drive.files.create({
              requestBody: {
-                 name: `${todayDate}.json`,
+                //  name: `${todayDate}.json`,
+                 name: `uploadChecking.txt`,
                  mimeType: 'application/json',
-                 parents: [folderId]
+                 parents: [FOLDER_ID]
              },
              media: {
                  mimeType: 'application/json',
