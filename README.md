@@ -18,5 +18,3 @@ That's why you need to put all details into env file.
 😅
 
 Feature implemented -> Upload
-
-#### Note: When I run app.js into Digitalocean VM, It's not working for env file that's why I used all secrets into the app.js
